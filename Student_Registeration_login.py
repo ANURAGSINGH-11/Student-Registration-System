@@ -2,7 +2,6 @@ from tkinter import *
 import math
 import pymysql
 import os
-import tkinter as tk
 
 #Record for Registration  
 def check(lb,g,txt):
@@ -17,7 +16,7 @@ def check(lb,g,txt):
     else:
         gen="Female"
     t=scroll.get()
-    conn=pymysql.connect(host="localhost",user="root",password="ansk27911",db="student")
+    conn=pymysql.connect(host="localhost",user="root",password="",db="student")
     a=conn.cursor()
     sql="insert into student_register values('"+user_info+"','"+pwd_info+"')"
     a.execute(sql)
@@ -28,13 +27,13 @@ def check(lb,g,txt):
     lb.configure(text="Registration Successful",fg="green")
     
 
-
+#Academics Detail
 def academics():
     academics=Toplevel(w)
     academics.title("Academic Histroy")
     academics.iconbitmap(r'Student.ico')
     academics.attributes("-fullscreen", True)
-    conn=pymysql.connect(host="localhost",user="root",password="ansk27911",db="student")
+    conn=pymysql.connect(host="localhost",user="root",password="",db="student")
     a=conn.cursor()
     sql="select student_academics.sem1,student_academics.sem2,student_academics.sem3 from student_register inner join student_academics where student_register.username=student_academics.username and student_register.username='"+user1_info+"'"
     a.execute(sql)
@@ -47,6 +46,7 @@ def academics():
     Button(academics,text='View Sem1', command = lambda:os.startfile('Resume_anurag.pdf'),bd=5,width=13,font="14").place(x=300,y=180)
 
 
+    
 #Check For Login   
 def check_login():
     check_login=Toplevel(w)
@@ -57,13 +57,12 @@ def check_login():
     user1_info=username1_entry.get()
     pwd1_info=pwd1_entry.get()
     user=username1_entry.get()
-    conn=pymysql.connect(host="localhost",user="root",password="ansk27911",db="student")
+    conn=pymysql.connect(host="localhost",user="root",password="",db="student")
     a=conn.cursor()
     sql="select student_info.username,student_info.name,student_info.age,student_info.gender,student_info.father_name,student_info.cgpa,student_info.address from student_register inner join student_info where student_register.username=student_info.username and student_register.username='"+user+"'"
     a.execute(sql)
     conn.commit()
     data=a.fetchall()
-    i=2
     for d in data:
         lb1=Label(check_login,text="Username:"+d[0],font=("Calibri",20),fg="blue").place(x=300,y=30)
         lb2=Label(check_login,text="Name:"+d[1],font=("Calibri",20),fg="blue").place(x=300,y=80)
