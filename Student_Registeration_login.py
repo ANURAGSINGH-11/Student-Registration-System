@@ -43,7 +43,7 @@ def academics():
         lb1=Label(academics,text="Semester1:  "+str(d[0]),font=("Calibri",20),fg="blue").place(x=300,y=30)
         lb2=Label(academics,text="Semester2:  "+str(d[1]),font=("Calibri",20),fg="blue").place(x=300,y=80)
         lb3=Label(academics,text="Semester3:  "+str(d[2]),font=("Calibri",20),fg="blue").place(x=300,y=130)
-    Button(academics,text='View Sem1', command = lambda:os.startfile('Resume_anurag.pdf'),bd=5,width=13,font="14").place(x=300,y=180)
+    Button(academics,text='View Sem1', command = lambda:os.startfile('File_Name.pdf'),bd=5,width=13,font="14").place(x=300,y=180)
 
 
     
